@@ -1,0 +1,5 @@
+certifi==2023.7.22
+streamlit>=1.32
+streamlit-webrtc>=0.62
+opencv-python-headless>=4.9
+av>=11.0
