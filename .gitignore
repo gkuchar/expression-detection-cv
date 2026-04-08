@@ -1,2 +1,6 @@
 /venv
 src/.ipynb_checkpoints/
+data/raw_train
+data/raw_test
+__pycache__/
+*.py[cod]
