@@ -10,18 +10,17 @@ st.set_page_config(page_title="Emotion to Emoji", layout = "wide")
 st.title("Live Emotion -> Emoji")
 st.write("CPU Implementation")
 
-SIZE = 128
+SIZE = 48
 FRAME_REFRESH_COUNT = 5
 
 EMOTION_EMOJI = {
-    0: "😠",
-    1: "🤢",
-    2: "😑",
-    3: "😀",
-    4: "😨",
-    5: "🙁",
-    6: "😮",
-    7: "😐",
+    0: "😠", # angry
+    1: "🤢", # disgust
+    2: "😀", # happy
+    3: "😨", # fear
+    4: "🙁", # sad
+    5: "😮", # surprised
+    6: "😐", # neutral
 }
 
 
