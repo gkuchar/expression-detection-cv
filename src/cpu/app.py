@@ -2,7 +2,7 @@ import cv2
 import streamlit as st
 import av
 from model import predict_emotion
-from backend import draw_emoji, normalize
+from backend import draw_emoji
 
 from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, WebRtcMode
 
@@ -40,9 +40,11 @@ class VideoProcessor(VideoProcessorBase):
         if self.frame_count % FRAME_REFRESH_COUNT == 0:
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             gray = cv2.resize(gray, (SIZE, SIZE))
-            gray = normalize(gray)
-            
-            emotion = predict_emotion(gray)  # NN MODEL API CALL
+            gray = gray.astype("float32") / 127.5 - 1.0 # Same normalization as train.py/model.py
+            gray = gray.reshape(1, SIZE, SIZE)
+
+            emotion = predict_emotion(gray) # EMOTION NN CALL
+
             self.current_emoji = EMOTION_EMOJI[emotion]
 
         cv2.putText(
