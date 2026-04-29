@@ -13,13 +13,9 @@ _WEIGHTS_PATH = Path(__file__).with_name("emotion_cnn_weights.npz")
 Array = np.ndarray
 
 EMOTION_LABELS: tuple[str, ...] = (
-    "angry",
-    "disgust",
     "happy",
-    "fear",
-    "sad",
-    "surprised",
     "neutral",
+    "sad",
 )
 
 
@@ -29,7 +25,7 @@ class ModelConfig:
     # 1 channel means grayscale, 48x48 pixel image
     input_shape: tuple[int, int, int] = (1, 48, 48)
 
-    # 7 emotions
+    # 3 emotions
     num_classes: int = len(EMOTION_LABELS)
 
     # 2 Layer CNN

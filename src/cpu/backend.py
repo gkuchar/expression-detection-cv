@@ -2,12 +2,12 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 import cv2
 
-def draw_emoji(img, emoji, position):
-    pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-    draw = ImageDraw.Draw(pil_img)
-    font = ImageFont.truetype("/System/Library/Fonts/Apple Color Emoji.ttc", 64)
-    draw.text(position, emoji, font=font, embedded_color=True)
-    return cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
+def draw_emoji(img, emoji_img, position):
+    emoji_img = emoji_img.resize((emoji_img.width // 2, emoji_img.height // 2))
+    pil_img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB)).convert("RGBA")
+    pil_img.paste(emoji_img, position, emoji_img)
+    result = pil_img.convert("RGB")
+    return cv2.cvtColor(np.array(result), cv2.COLOR_RGB2BGR)
 
 # Pixel Normalization Function
 def normalize(img: np.ndarray) -> np.ndarray:
