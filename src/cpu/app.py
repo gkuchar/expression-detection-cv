@@ -10,7 +10,6 @@ from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, WebRtcMode
 
 st.set_page_config(page_title="Emotion to Emoji", layout = "wide")
 st.title("Live Emotion -> Emoji")
-st.write("CPU Implementation")
 
 SIZE = 48
 FRAME_REFRESH_COUNT = 5
@@ -139,7 +138,7 @@ class VideoProcessor(VideoProcessorBase):
         img = draw_emoji(img, self.current_emoji, (290, 20))
         cv2.putText(
             img,
-            "CPU Live Camera Prototype",
+            "Live Camera",
             (20, img.shape[0] - 20),  # bottom of frame
             cv2.FONT_HERSHEY_SIMPLEX,
             0.8,
